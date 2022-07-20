@@ -4,42 +4,44 @@ export default class Chat1 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            chat1: '',
+            mess: ''
         }
     }
+
 
     checkInput = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
-        console.log(e.target.value)
-    }   
+    }
     submitForm = (e) => {
         e.preventDefault();
         e.target.reset()
-        let item = {};
-        item.chat1 = this.state.chat1;
-        console.log(item)
-        this.props.add(item)
+        let info = {};
+        info.mess = this.state.mess;
+        console.log(info)
+        this.props.add(info)
+        this.props.pushs(info)
         this.setState({
-            chat1: ''
+            mess: ''
         })
     }
 
     render() {
         return (
             <>
-                <h3>chat 1</h3>
-                <form onSubmit={this.submitForm}>
-                    <textarea 
-                    onChange={this.checkInput} 
-                    name="chat1" 
-                    className='form-control' 
-                    placeholder='Chat1'
-                    >
-                    </textarea>
-                    <button type="submit" className="btn btn-success mt-3">Submit</button>
-                </form>
+                <div className="dn">
+                    <h3>chat 1</h3>
+                    <form onSubmit={this.submitForm}>
+                        <input
+                            onChange={this.checkInput}
+                            name="mess"
+                            className='form-control'
+                            placeholder='Chat1'
+                        />
+                        <button type="submit" className="btn btn-success mt-3">Submit</button>
+                    </form>
+                </div>
             </>
         )
     }

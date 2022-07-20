@@ -12,14 +12,12 @@ export default class Chat2 extends Component {
         this.setState({
             [e.target.name]: e.target.value
         })
-        console.log(e.target.value)
     }   
     submitForm2 = (e) => {
         e.preventDefault();
         e.target.reset()
         let item = {};
         item.chat2 = this.state.chat2;
-        console.log(item)
         this.props.add(item)
         this.setState({
             chat2: ''
